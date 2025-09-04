@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concentric Rings Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Left panel for user inputs -->
+        <div class="parameter-panel">
+            <h1 class="title">Concentric Rings</h1>
+            <p class="description">
+                Adjust the parameters below to generate a new image.
+            </p>
+
+            <div class="input-group">
+                <label for="sizeInput">Square Size (px)</label>
+                <input type="number" id="sizeInput" value="400" min="100" max="1000">
+            </div>
+
+            <div class="input-group">
+                <label class="section-title">Colored Part (RGBA)</label>
+                <div class="color-inputs">
+                    <input type="number" id="coloredR" value="0" min="0" max="255" title="Red">
+                    <input type="number" id="coloredG" value="0" min="0" max="255" title="Green">
+                    <input type="number" id="coloredB" value="0" min="0" max="255" title="Blue">
+                    <input type="number" id="coloredA" value="255" min="0" max="255" title="Alpha">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="section-title">Transparent Part (RGBA)</label>
+                <div class="color-inputs">
+                    <input type="number" id="transparentR" value="0" min="0" max="255" title="Red">
+                    <input type="number" id="transparentG" value="0" min="0" max="255" title="Green">
+                    <input type="number" id="transparentB" value="0" min="0" max="255" title="Blue">
+                    <input type="number" id="transparentA" value="0" min="0" max="255" title="Alpha">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right panel for output and download button -->
+        <div class="output-panel">
+            <canvas id="ringsCanvas" class="canvas"></canvas>
+            <a id="downloadLink" class="button" href="#" download="square_rings.png">Download</a>
+        </div>
+    </div>
+
+    <!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
