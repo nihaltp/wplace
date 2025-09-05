@@ -1,0 +1,4 @@
+{
+    "title": "Image Color Filter",
+    "description": "This tool lets you upload an image and filter it by color. You can choose which colors to keep, and the tool will remove all unselected colors from the image. Color options include a set of predefined \"Free Colors\" and \"Premium Colors\" from wplace.live, and the ability to add your own \"Custom Colors\". The filtered image can be downloaded in PNG format."
+}
