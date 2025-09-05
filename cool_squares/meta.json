@@ -1,0 +1,5 @@
+{
+    "title": "Concentric Rings Generator",
+    "description": "This page allows you to generate an image of concentric rings by adjusting several parameters. You can set the square size and define the colors for the \"colored\" and \"transparent\" parts of the rings using RGBA (Red, Green, Blue, Alpha) values. The generated image can be downloaded as a PNG file.",
+    "image": "assets/square_rings.png"
+}
