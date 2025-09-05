@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Color Filter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Left panel for user inputs -->
+        <div class="parameter-panel">
+            <h1 class="title">Image Color Filter</h1>
+            <p class="description">Upload an image and select the colors you want to keep. All other colors will be removed.</p>
+
+            <div class="input-group">
+                <label for="imageUpload" class="file-label">Upload Image</label>
+                <input type="file" id="imageUpload" accept="image/*" class="file-input">
+            </div>
+
+            <div class="color-palette-section">
+                <h2 class="section-title">Free Colors</h2>
+                <div id="freeColors" class="color-palette"></div>
+            </div>
+            
+            <div class="color-palette-section">
+                <h2 class="section-title">Premium Colors</h2>
+                <div id="premiumColors" class="color-palette"></div>
+            </div>
+
+            <div class="color-palette-section">
+                <h2 class="section-title">Custom Colors</h2>
+                <div id="errorMessage" class="error-message"></div>
+                <div class="custom-color-input-group">
+                    <input type="text" id="customColorInput" class="custom-color-input" placeholder="Enter color (e.g., #000, #ff0000, 255,0,0)">
+                    <button id="addCustomColorBtn" class="add-button">Add</button>
+                </div>
+                <div class="color-palette" id="customColors"></div>
+            </div>
+        </div>
+
+        <!-- Right panel for output -->
+        <div class="output-panel">
+            <div class="canvas-container">
+                <canvas id="imageCanvas" class="canvas"></canvas>
+            </div>
+            <div class="button-group">
+                <button id="removeColorsBtn" class="button">Remove Unselected Colors</button>
+                <button id="resetBtn" class="button button-secondary">Reset</button>
+            </div>
+            <a href="#" id="downloadLink" class="download-button button" style="display:none;">Download</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
