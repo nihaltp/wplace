@@ -234,3 +234,16 @@ body {
     margin-top: 1.5rem;
     align-self: center;
 }
+
+.error-message {
+    background-color: #fca5a5;
+    color: #b91c1c;
+    border: 1px solid #f87171;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    display: none;
+}

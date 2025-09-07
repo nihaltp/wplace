@@ -13,6 +13,7 @@ window.onload = function() {
     const imageCanvas = document.getElementById('imageCanvas');
     const downloadLink = document.getElementById('downloadLink');
     const ctx = imageCanvas.getContext('2d');
+    const errorMessage = document.getElementById('errorMessage');
 
     let originalImageData = null;
     let activeRgbKeys = new Set();
@@ -88,7 +89,7 @@ window.onload = function() {
             swatch.dataset.hex = colorInfo.hex;
             swatch.title = `Hex: ${colorInfo.hex.toUpperCase()}\nRGB: (${colorInfo.rgb.join(', ')})`;
         } else {
-            console.error('Invalid color for swatch creation:', hexColor);
+            showError("Invalid color for swatch creation.");
             return;
         }
 
@@ -256,6 +257,19 @@ window.onload = function() {
         downloadLink.href = imageCanvas.toDataURL('image/png');
     }
     
+    /**
+     * Shows an error message in a box.
+     * 
+     * @param {string} message - The message to display.
+     */
+    function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.style.display = 'block';
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+        }, 3000); // Hide after 3 seconds
+    }
+
     // --- Add custom color logic function ---
     function handleAddCustomColor() {
         const colorInput = customColorInput.value;
@@ -283,7 +297,7 @@ window.onload = function() {
             saveSelectedColors();
             customColorInput.value = '';
         } else {
-            console.error("Please enter a valid color code (e.g., #RRGGBB, #RGB, or 0,0,0).");
+            showError("Please enter a valid color code (e.g., #RRGGBB, #RGB, or 0,0,0).");
         }
     }
 
