@@ -165,6 +165,15 @@ window.onload = function() {
     }
 
     // --- Core Logic ---
+    function isFirstRun() {
+        const firstRunFlag = localStorage.getItem('firstRun');
+        if (firstRunFlag === null) {
+            localStorage.setItem('firstRun', 'false');
+            return true;
+        }
+        return false;
+    }
+
     function renderInitialPalettes() {
         freeHexColors.forEach(hex => createColorSwatch(hex, freeColorsContainer));
         premiumHexColors.forEach(hex => createColorSwatch(hex, premiumColorsContainer));
@@ -293,6 +302,19 @@ window.onload = function() {
 
     // --- Initialization ---
     loadCustomColors();
-    loadSelectedColors();
+    
+    // Check if it's the first time the user visits
+    if (isFirstRun()) {
+        freeHexColors.forEach(hex => {
+            const colorInfo = parseColorInput(hex);
+            if (colorInfo) {
+                activeRgbKeys.add(colorInfo.rgb.join(','));
+            }
+        });
+        saveSelectedColors();
+    } else {
+        loadSelectedColors();
+    }
+    
     renderInitialPalettes();
 };
