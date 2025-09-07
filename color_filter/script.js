@@ -1,70 +1,70 @@
 window.onload = function() {
     const freeHexColors = {
-        "#000000": "Black",
-        "#3c3c3c": "Dark Gray",
-        "#787878": "Gray",
-        "#d2d2d2": "Light Gray",
-        "#ffffff": "White",
-        "#600018": "Deep Red",
-        "#ed1c24": "Red",
-        "#ff7f27": "Orange",
-        "#f6aa09": "Gold",
-        "#f9dd3b": "Yellow",
-        "#fffabc": "Light Yellow",
-        "#0eb968": "Dark Green",
-        "#13e67b": "Green",
-        "#87ff5e": "Light Green",
-        "#0c816e": "Dark Teal",
-        "#10aea6": "Teal",
-        "#13e1be": "Light Teal",
-        "#60f7f2": "Dark Blue",
-        "#28509e": "Blue",
-        "#4093e4": "Cyan",
-        "#6b50f6": "Indigo",
-        "#99b1fb": "Light Indigo",
-        "#780c99": "Dark Purple",
-        "#aa38b9": "Purple",
-        "#e09ff9": "Light Purple",
-        "#cb007a": "Dark Pink",
-        "#ec1f80": "Pink",
-        "#f38da9": "Light Pink",
-        "#684634": "Dark Brown",
-        "#95682a": "Brown",
-        "#f8b277": "Beige"
+        "#000000": { name: "Black", id: "1" },
+        "#3c3c3c": { name: "Dark Gray", id: "2" },
+        "#787878": { name: "Gray", id: "3" },
+        "#d2d2d2": { name: "Light Gray", id: "4" },
+        "#ffffff": { name: "White", id: "5" },
+        "#600018": { name: "Deep Red", id: "6" },
+        "#ed1c24": { name: "Red", id: "7" },
+        "#ff7f27": { name: "Orange", id: "8" },
+        "#f6aa09": { name: "Gold", id: "9" },
+        "#f9dd3b": { name: "Yellow", id: "10" },
+        "#fffabc": { name: "Light Yellow", id: "11" },
+        "#0eb968": { name: "Dark Green", id: "12" },
+        "#13e67b": { name: "Green", id: "13" },
+        "#87ff5e": { name: "Light Green", id: "14" },
+        "#0c816e": { name: "Dark Teal", id: "15" },
+        "#10aea6": { name: "Teal", id: "16" },
+        "#13e1be": { name: "Light Teal", id: "17" },
+        "#28509e": { name: "Blue", id: "18" },
+        "#4093e4": { name: "Cyan", id: "19" },
+        "#60f7f2": { name: "Dark Blue", id: "20" },
+        "#6b50f6": { name: "Indigo", id: "21" },
+        "#99b1fb": { name: "Light Indigo", id: "22" },
+        "#780c99": { name: "Dark Purple", id: "23" },
+        "#aa38b9": { name: "Purple", id: "24" },
+        "#e09ff9": { name: "Light Purple", id: "25" },
+        "#cb007a": { name: "Dark Pink", id: "26" },
+        "#ec1f80": { name: "Pink", id: "27" },
+        "#f38da9": { name: "Light Pink", id: "28" },
+        "#684634": { name: "Dark Brown", id: "29" },
+        "#95682a": { name: "Brown", id: "30" },
+        "#f8b277": { name: "Beige", id: "31" }
     };
     const premiumHexColors = {
-        "#aaaaaa" : "Medium Gray",
-        "#a50e1e" : "Dark Red",
-        "#fa8072" : "Light Red",
-        "#e45c1a" : "Dark Orange",
-        "#9c8431" : "Dark Goldenrod",
-        "#c5ad31" : "Goldenrod",
-        "#e8d45f" : "Light Goldenrod",
-        "#4a6b3a" : "Dark Olive",
-        "#5a944a" : "Olive",
-        "#84c573" : "Light Olive",
-        "#0f799f" : "Dark Cyan",
-        "#bbfaf2" : "Light Cyan",
-        "#7dc7ff" : "Light Blue",
-        "#4d31b8" : "Dark Indigo",
-        "#4a4284" : "Slate Blue",
-        "#7a71c4" : "Slate Blue",
-        "#b5aef1" : "Slate Blue",
-        "#9b5249" : "Dark Peach",
-        "#d18078" : "Peach",
-        "#fab6a4" : "Light Peach",
-        "#dba463" : "Light Brown",
-        "#7b6352" : "Dark Tan",
-        "#9c846b" : "Tan",
-        "#d6b594" : "Light Tan",
-        "#d18051" : "Dark Beige",
-        "#ffc5a5" : "Light Beige",
-        "#6d643f" : "Dark Stone",
-        "#948c6b" : "Stone",
-        "#cdc59e" : "Light Stone",
-        "#333941" : "Dark Slate",
-        "#6d758d" : "Slate",
-        "#b3b9d1" : "Light Slate"
+        "#aaaaaa" : { name: "Medium Gray", id: "32" },
+        "#a50e1e" : { name: "Dark Red", id: "33" },
+        "#fa8072" : { name: "Light Red", id: "34" },
+        "#e45c1a" : { name: "Dark Orange", id: "35" },
+        "#d6b594" : { name: "Light Tan", id: "36" },
+        "#9c8431" : { name: "Dark Goldenrod", id: "37" },
+        "#c5ad31" : { name: "Goldenrod", id: "38" },
+        "#e8d45f" : { name: "Light Goldenrod", id: "39" },
+        "#4a6b3a" : { name: "Dark Olive", id: "40" },
+        "#5a944a" : { name: "Olive", id: "41" },
+        "#84c573" : { name: "Light Olive", id: "42" },
+        "#0f799f" : { name: "Dark Cyan", id: "43" },
+        "#bbfaf2" : { name: "Light Cyan", id: "44" },
+        "#7dc7ff" : { name: "Light Blue", id: "45" },
+        "#4d31b8" : { name: "Dark Indigo", id: "46" },
+        "#4a4284" : { name: "Slate Blue", id: "47" },
+        "#7a71c4" : { name: "Slate Blue", id: "48" },
+        "#b5aef1" : { name: "Slate Blue", id: "49" },
+        "#dba463" : { name: "Light Brown", id: "50" },
+        "#d18051" : { name: "Dark Beige", id: "51" },
+        "#ffc5a5" : { name: "Light Beige", id: "52" },
+        "#9b5249" : { name: "Dark Peach", id: "53" },
+        "#d18078" : { name: "Peach", id: "54" },
+        "#fab6a4" : { name: "Light Peach", id: "55" },
+        "#7b6352" : { name: "Dark Tan", id: "56" },
+        "#9c846b" : { name: "Tan", id: "57" },
+        "#333941" : { name: "Dark Slate", id: "58" },
+        "#6d758d" : { name: "Slate", id: "59" },
+        "#b3b9d1" : { name: "Light Slate", id: "60" },
+        "#6d643f" : { name: "Dark Stone", id: "61" },
+        "#948c6b" : { name: "Stone", id: "62" },
+        "#cdc59e" : { name: "Light Stone", id: "63" },
     };
 
     const imageUpload = document.getElementById('imageUpload');
@@ -141,9 +141,10 @@ window.onload = function() {
      * Creates and appends a color swatch element to a container.
      * @param {string} hexColor - The hex color for the swatch.
      * @param {HTMLElement} container - The element to append the swatch to.
+     * @param {string} info - Additional information to display in the tooltip.
      * @param {boolean} isCustom - True if the swatch is for a custom color.
      */
-    function createColorSwatch(hexColor, container, name = "", isCustom = false) {
+    function createColorSwatch(hexColor, container, info = "", isCustom = false) {
         const swatch = document.createElement('div');
         swatch.className = 'color-swatch';
         swatch.style.backgroundColor = hexColor;
@@ -153,7 +154,13 @@ window.onload = function() {
             const rgbKey = colorInfo.rgb.join(',');
             swatch.dataset.rgb = rgbKey;
             swatch.dataset.hex = colorInfo.hex;
-            swatch.title = `${name}\nHex: ${colorInfo.hex.toUpperCase()}\nRGB: (${colorInfo.rgb.join(', ')})`;
+            let titleParts = [];
+            if (info.name && info.id) {
+                titleParts.push(`${info.name} #${info.id}`);
+            }
+            titleParts.push(`Hex: ${colorInfo.hex.toUpperCase()}`);
+            titleParts.push(`RGB: (${colorInfo.rgb.join(', ')})`);
+            swatch.title = titleParts.join('\n');
         } else {
             showError("Invalid color for swatch creation.");
             return;
@@ -396,7 +403,7 @@ window.onload = function() {
     
     // Check if it's the first time the user visits
     if (isFirstRun()) {
-        Object.entries(freeHexColors).forEach(([hex, name]) => {
+        Object.entries(freeHexColors).forEach(([hex, _]) => {
             const colorInfo = parseColorInput(hex);
             if (colorInfo) {
                 activeRgbKeys.add(colorInfo.rgb.join(','));
