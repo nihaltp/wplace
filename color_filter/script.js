@@ -18,6 +18,7 @@ window.onload = function() {
     let originalImageData = null;
     let activeRgbKeys = new Set();
     let customHexColors = [];
+    let filename = '';
     
     /**
      * Converts a color string (hex, rgb, or rgba) to a standardized color object.
@@ -205,6 +206,7 @@ window.onload = function() {
         const file = event.target.files[0];
         if (!file) return;
 
+        filename = file.name.split(".")[0];
         const reader = new FileReader();
         reader.onload = function(e) {
             const img = new Image();
@@ -254,7 +256,6 @@ window.onload = function() {
         }
 
         ctx.putImageData(processedImageData, 0, 0);
-        downloadLink.href = imageCanvas.toDataURL('image/png');
     }
     
     /**
@@ -306,6 +307,17 @@ window.onload = function() {
     removeColorsBtn.addEventListener('click', processImage);
     resetBtn.addEventListener('click', resetImage);
     addCustomColorBtn.addEventListener('click', handleAddCustomColor);
+
+    downloadLink.addEventListener('click', (event) => {
+        event.preventDefault(); 
+        const dataURL = imageCanvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = dataURL;
+        a.download = `${filename}_filtered.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
 
     customColorInput.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
