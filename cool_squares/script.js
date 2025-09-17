@@ -13,6 +13,7 @@ window.onload = function() {
     const ctx = canvas.getContext('2d');
     const downloadLink = document.getElementById('downloadLink');
     const pxCount = document.getElementsByClassName('pxCount');
+    const addRingBtn = document.getElementById('addRingBtn');
 
     function drawRings() {
         // Read values from inputs and parse them as integers.
@@ -78,6 +79,10 @@ window.onload = function() {
     transparentG.addEventListener('input', drawRings);
     transparentB.addEventListener('input', drawRings);
     transparentA.addEventListener('input', drawRings);
+    addRingBtn.addEventListener('click', () => {
+        sizeInput.value = parseInt(sizeInput.value) + 4;
+        drawRings();
+    })
 
     // Initial call to draw the first image when the page loads
     drawRings();
