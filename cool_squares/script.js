@@ -12,6 +12,7 @@ window.onload = function() {
     const canvas = document.getElementById('ringsCanvas');
     const ctx = canvas.getContext('2d');
     const downloadLink = document.getElementById('downloadLink');
+    const pxCount = document.getElementsByClassName('pxCount');
 
     function drawRings() {
         // Read values from inputs and parse them as integers.
@@ -39,6 +40,7 @@ window.onload = function() {
         const pixels = imageData.data;
 
         // Loop through each pixel (x, y)
+        let i = 0;
         for (let y = 0; y < size; y++) {
             for (let x = 0; x < size; x++) {
                 // Calculate the distance from the nearest edge
@@ -48,6 +50,7 @@ window.onload = function() {
                 const index = (y * size + x) * 4;
 
                 const color = (dist % 2 === 0) ? coloredRGBA : transparentRGBA;
+                i += (dist % 2 === 0) ? 1 : 0;
 
                 // Set pixel color using the chosen RGBA array
                 pixels[index] = color[0];       // R: Red
@@ -56,6 +59,7 @@ window.onload = function() {
                 pixels[index + 3] = color[3];   // A: Alpha
             }
         }
+        pxCount[0].innerHTML = i + ' pixels';
 
         // Put the modified pixel data back onto the canvas to render the image
         ctx.putImageData(imageData, 0, 0);

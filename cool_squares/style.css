@@ -60,6 +60,10 @@ body {
     gap: 0.5rem;
 }
 
+.pxCount {
+    font-size: 13px;
+}
+
 .section-title {
     font-weight: 600;
 }
