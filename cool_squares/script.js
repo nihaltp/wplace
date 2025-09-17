@@ -15,6 +15,10 @@ window.onload = function() {
     const pxCount = document.getElementsByClassName('pxCount');
     const addRingBtn = document.getElementById('addRingBtn');
 
+    function saveSizeInput() {
+        localStorage.setItem('sizeInput', sizeInput.value);
+    }
+
     function drawRings() {
         // Read values from inputs and parse them as integers.
         // Use a default value if the input is empty or invalid (NaN).
@@ -69,8 +73,16 @@ window.onload = function() {
         downloadLink.href = canvas.toDataURL('image/png');
     }
 
+    if (localStorage.getItem('sizeInput')) {
+        if (Number.isInteger(parseInt(localStorage.getItem('sizeInput')))) {
+            sizeInput.value = localStorage.getItem('sizeInput');
+        }
+    }
     // Add input event listeners to all control elements to trigger a redraw
-    sizeInput.addEventListener('input', drawRings);
+    sizeInput.addEventListener('input', () => {
+        saveSizeInput();
+        drawRings();
+    });
     coloredR.addEventListener('input', drawRings);
     coloredG.addEventListener('input', drawRings);
     coloredB.addEventListener('input', drawRings);
@@ -81,6 +93,7 @@ window.onload = function() {
     transparentA.addEventListener('input', drawRings);
     addRingBtn.addEventListener('click', () => {
         sizeInput.value = parseInt(sizeInput.value) + 4;
+        saveSizeInput();
         drawRings();
     })
 
