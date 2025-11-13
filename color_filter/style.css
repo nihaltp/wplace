@@ -181,7 +181,6 @@ body {
 
 .button {
     flex: 1;
-    display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 0.75rem 1.5rem;
@@ -226,18 +225,25 @@ body {
     object-fit: contain;
 }
 
+#removeColorsBtn,
+#resetBtn,
 .download-button {
     display: none;
+}
+
+#removeColorsBtn.visible,
+#resetBtn.visible,
+.download-button.visible {
+    display: inline-flex;
+}
+
+.download-button {
     width: auto;
     max-width: 250px;
     max-height: 25px;
     margin-top: 1.5rem;
     align-self: center;
     line-height: 25px;
-}
-
-.download-button.visible {
-    display: block;
 }
 
 .error-message {

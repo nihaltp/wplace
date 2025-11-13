@@ -293,6 +293,8 @@ window.onload = function() {
 
                 // Store a copy of the original image data
                 originalImageData = ctx.getImageData(0, 0, img.width, img.height);
+                removeColorsBtn.classList.add('visible');
+                resetBtn.classList.add('visible');
             };
             img.src = e.target.result;
         };
