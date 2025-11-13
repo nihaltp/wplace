@@ -227,12 +227,17 @@ body {
 }
 
 .download-button {
+    display: none;
     width: auto;
     max-width: 250px;
-    height: auto;
     max-height: 25px;
     margin-top: 1.5rem;
     align-self: center;
+    line-height: 25px;
+}
+
+.download-button.visible {
+    display: block;
 }
 
 .error-message {

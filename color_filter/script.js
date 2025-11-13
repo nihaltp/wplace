@@ -268,6 +268,7 @@ window.onload = function() {
         if (!originalImageData) return;
         ctx.putImageData(originalImageData, 0, 0);
         downloadLink.href = imageCanvas.toDataURL('image/png');
+        downloadLink.classList.remove('visible');
     }
 
     /**
@@ -292,7 +293,6 @@ window.onload = function() {
 
                 // Store a copy of the original image data
                 originalImageData = ctx.getImageData(0, 0, img.width, img.height);
-                downloadLink.style.display = 'block';
             };
             img.src = e.target.result;
         };
@@ -328,6 +328,7 @@ window.onload = function() {
         }
 
         ctx.putImageData(processedImageData, 0, 0);
+        downloadLink.classList.add('visible');
     }
     
     /**
