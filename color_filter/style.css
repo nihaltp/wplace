@@ -269,3 +269,18 @@ body {
     clip: rect(0 0 0 0);
     border: 0;
 }
+
+.drop-zone {
+    padding: 40px;
+    border: 2px dashed #888;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.drop-zone.dragover {
+    border-color: #4a90e2;
+    background: rgba(74, 144, 226, 0.1);
+}

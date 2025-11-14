@@ -1,7 +1,8 @@
 import {freeHexColors, premiumHexColors} from './colors.js';
 
 window.onload = function() {
-    const imageUpload = document.getElementById('imageUpload');
+    const dropZone = document.getElementById("dropZone");
+    const imageInput = document.getElementById("imageInput");
     const freeColorsContainer = document.getElementById('freeColors');
     const premiumColorsContainer = document.getElementById('premiumColors');
     const customColorsContainer = document.getElementById('customColors');
@@ -311,7 +312,28 @@ window.onload = function() {
     }
 
     // --- Event Listeners ---
-    imageUpload.addEventListener('change', handleImageUpload);
+    dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("dragover");
+    });
+    dropZone.addEventListener("dragleave", () => {
+        dropZone.classList.remove("dragover");
+    });
+
+    dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropZone.classList.remove("dragover");
+
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            handleImageUpload({ target: { files: [file] } } );
+        }
+    });
+    dropZone.addEventListener("click", () => {
+        imageInput.click();
+    });
+
+    imageInput.addEventListener("change", handleImageUpload);
     removeColorsBtn.addEventListener('click', processImage);
     resetBtn.addEventListener('click', resetImage);
     addCustomColorBtn.addEventListener('click', handleAddCustomColor);

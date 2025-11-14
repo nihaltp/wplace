@@ -13,12 +13,10 @@
         <!-- Left panel for user inputs -->
         <div class="parameter-panel">
             <h1 class="title">Image Color Filter</h1>
-            <p class="description">Upload an image and select the colors you want to keep. All other colors will be removed.</p>
-
-            <div class="input-group">
-                <label for="imageUpload" class="file-label">Upload Image</label>
-                <input type="file" id="imageUpload" accept="image/*" class="file-input">
-            </div>
+            <p class="description">
+                Upload an image and select the colors you want to keep. All other colors will be removed.<br>
+                Make sure to use <b>pixelated</b> images.
+            </p>
 
             <div class="color-palette-section">
                 <h2 class="section-title">Free Colors</h2>
@@ -44,15 +42,22 @@
         </div>
 
         <!-- Right panel for output -->
-        <div class="output-panel">
-            <div class="canvas-container">
-                <canvas id="imageCanvas" class="canvas"></canvas>
+        <div>
+            <div id="dropZone" class="drop-zone">
+                Drop image here or click to upload
             </div>
-            <div class="button-group">
-                <button id="removeColorsBtn" class="button">Remove Unselected Colors</button>
-                <button id="resetBtn" class="button button-secondary">Reset</button>
+            <input type="file" id="imageInput" accept="image/*" hidden>
+
+            <div class="output-panel">
+                <div class="canvas-container">
+                    <canvas id="imageCanvas" class="canvas"></canvas>
+                </div>
+                <div class="button-group">
+                    <button id="removeColorsBtn" class="button">Remove Unselected Colors</button>
+                    <button id="resetBtn" class="button button-secondary">Reset</button>
+                </div>
+                <a href="#" id="downloadLink" class="download-button button">Download</a>
             </div>
-            <a href="#" id="downloadLink" class="download-button button">Download</a>
         </div>
     </div>
 
