@@ -233,6 +233,9 @@ window.onload = function() {
             img.src = e.target.result;
         };
         reader.readAsDataURL(file);
+
+        document.getElementById('dropZone').classList.add('hidden');
+        document.querySelector('.output-panel').classList.remove('hidden');
     }
 
     /**
