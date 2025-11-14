@@ -10,8 +10,23 @@
 <body>
 
     <div class="main-container">
-        <!-- Left panel for user inputs -->
         <div class="parameter-panel">
+            <div id="dropZone" class="drop-zone">
+                Drop image here or click to upload
+            </div>
+            <input type="file" id="imageInput" accept="image/*" hidden>
+
+            <div class="output-panel hidden">
+                <div class="canvas-container">
+                    <canvas id="imageCanvas" class="canvas"></canvas>
+                </div>
+                <div class="button-group">
+                    <button id="removeColorsBtn" class="button">Remove Unselected Colors</button>
+                    <button id="resetBtn" class="button button-secondary">Reset</button>
+                </div>
+                <a href="#" id="downloadLink" class="download-button button">Download</a>
+            </div>
+
             <h1 class="title">Image Color Filter</h1>
             <p class="description">
                 Upload an image and select the colors you want to keep. All other colors will be removed.<br>
@@ -22,7 +37,7 @@
                 <h2 class="section-title">Free Colors</h2>
                 <div id="freeColors" class="color-palette"></div>
             </div>
-            
+
             <div class="color-palette-section">
                 <h2 class="section-title">Premium Colors</h2>
                 <div id="premiumColors" class="color-palette"></div>
@@ -38,25 +53,6 @@
                     <button id="addCustomColorBtn" class="add-button">Add</button>
                 </div>
                 <div class="color-palette" id="customColors"></div>
-            </div>
-        </div>
-
-        <!-- Right panel for output -->
-        <div>
-            <div id="dropZone" class="drop-zone">
-                Drop image here or click to upload
-            </div>
-            <input type="file" id="imageInput" accept="image/*" hidden>
-
-            <div class="output-panel hidden">
-                <div class="canvas-container">
-                    <canvas id="imageCanvas" class="canvas"></canvas>
-                </div>
-                <div class="button-group">
-                    <button id="removeColorsBtn" class="button">Remove Unselected Colors</button>
-                    <button id="resetBtn" class="button button-secondary">Reset</button>
-                </div>
-                <a href="#" id="downloadLink" class="download-button button">Download</a>
             </div>
         </div>
     </div>
