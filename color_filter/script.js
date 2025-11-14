@@ -296,7 +296,7 @@ window.onload = function() {
             
             if (!customHexColors.includes(colorInfo.hex)) {
                 customHexColors.push(colorInfo.hex);
-                createColorSwatch(colorInfo.hex, customColorsContainer, true);
+                createColorSwatch(colorInfo.hex, customColorsContainer, "", true);
                 customColorsContainer.lastChild.classList.add('active');
                 saveCustomColors();
             } else {
