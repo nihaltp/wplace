@@ -15,6 +15,8 @@ window.onload = function() {
     const pxCount = document.getElementsByClassName('pxCount');
     const addRingBtn = document.getElementById('addRingBtn');
 
+    let holdInterval = null;
+
     function saveSizeInput() {
         localStorage.setItem('sizeInput', sizeInput.value);
     }
@@ -91,11 +93,29 @@ window.onload = function() {
     transparentG.addEventListener('input', drawRings);
     transparentB.addEventListener('input', drawRings);
     transparentA.addEventListener('input', drawRings);
-    addRingBtn.addEventListener('click', () => {
-        sizeInput.value = parseInt(sizeInput.value) + 4;
+    addRingBtn.addEventListener('mousedown', () => {
+        addRing();
+        holdInterval = setInterval(addRing, 150);
+    })
+    addRingBtn.addEventListener('mouseup', () => {
+        clearInterval(holdInterval);
+    });
+    addRingBtn.addEventListener('mouseleave', () => {
+        clearInterval(holdInterval);
+    });
+    addRingBtn.addEventListener('touchstart', () => {
+        addRing();
+        holdInterval = setInterval(addRing, 150);
+    })
+    addRingBtn.addEventListener('touchend', () => {
+        clearInterval(holdInterval);
+    })
+
+    function addRing() {
+        sizeInput.value = parseInt(sizeInput.value) + 4; // adds 2 pixels to each side (1px colored, 1px transparent)
         saveSizeInput();
         drawRings();
-    })
+    }
 
     // Initial call to draw the first image when the page loads
     drawRings();
