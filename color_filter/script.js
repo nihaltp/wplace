@@ -85,8 +85,7 @@ window.onload = function() {
 
         const colorInfo = parseColorInput(hexColor);
         if (colorInfo) {
-            const rgbKey = colorInfo.rgb.join(',');
-            swatch.dataset.rgb = rgbKey;
+            swatch.dataset.rgb = colorInfo.rgb.join(',');
             swatch.dataset.hex = colorInfo.hex;
             let titleParts = [];
             if (info.name && info.id) {
@@ -185,7 +184,7 @@ window.onload = function() {
     function renderInitialPalettes() {
         Object.entries(freeHexColors).forEach(([hex, name]) => createColorSwatch(hex, freeColorsContainer, name));
         Object.entries(premiumHexColors).forEach(([hex, name]) => createColorSwatch(hex, premiumColorsContainer, name));
-        customHexColors.forEach(hex => createColorSwatch(hex, customColorsContainer, isCustom = true));
+        customHexColors.forEach(hex => createColorSwatch(hex, customColorsContainer, "",  true));
 
         // Apply saved active state after all swatches are created
         document.querySelectorAll('.color-swatch').forEach(swatch => {
