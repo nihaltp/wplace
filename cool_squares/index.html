@@ -17,34 +17,33 @@
                 Adjust the parameters below to generate a new image.
             </p>
 
-            <div class="input-group">
-                <label for="sizeInput">Square Size (px)</label>
+            <fieldset class="input-group">
+                <legend class="section-title">Square Size (px)</legend>
                 <div class="input-with-button">
                     <input type="number" id="sizeInput" value="400" min="100" max="1000">
                     <button id="addRingBtn" class="add-button">+ ring</button>
                 </div>
                 <p class="pxCount"></p>
-            </div>
+            </fieldset>
 
-            <div class="input-group">
-                <label class="section-title">Colored Part (RGBA)</label>
+            <fieldset class="input-group">
+                <legend class="section-title">Colored Part (RGBA)</legend>
                 <div class="color-inputs">
                     <input type="number" id="coloredR" value="0" min="0" max="255" title="Red">
                     <input type="number" id="coloredG" value="0" min="0" max="255" title="Green">
                     <input type="number" id="coloredB" value="0" min="0" max="255" title="Blue">
                     <input type="number" id="coloredA" value="255" min="0" max="255" title="Alpha">
                 </div>
-            </div>
-
-            <div class="input-group">
-                <label class="section-title">Transparent Part (RGBA)</label>
+            </fieldset>
+            <fieldset class="input-group">
+                <legend class="section-title">Transparent Part (RGBA)</legend>
                 <div class="color-inputs">
                     <input type="number" id="transparentR" value="0" min="0" max="255" title="Red">
                     <input type="number" id="transparentG" value="0" min="0" max="255" title="Green">
                     <input type="number" id="transparentB" value="0" min="0" max="255" title="Blue">
                     <input type="number" id="transparentA" value="0" min="0" max="255" title="Alpha">
                 </div>
-            </div>
+            </fieldset>
 
         </div>
 
