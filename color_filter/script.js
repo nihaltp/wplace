@@ -26,49 +26,72 @@ window.onload = function() {
      * @returns {{rgb: number[], hex: string, key: string} | null} An object with color info or null.
      */
     function parseColorInput(colorString) {
+        if (colorString.includes(',')) {
+            return parseRGBInput(colorString);
+        }
+        return parseHexInput(colorString);
+    }
+
+    /**
+     * Parses a color string in the RGB/RGBA format into a standardized color object.
+     * @param {string} colorString - The color input from the user in the RGB/RGBA format.
+     * @returns {{rgb: number[], hex: string, key: string, alpha: number} | null} An object with color info or null if the input is invalid.
+     * @example parseRGBInput("0,0,0") // {rgb: [0,0,0], hex: "#000000", key: "0,0,0,255", alpha: 255}
+     * @example parseRGBInput("0,0,0,255") // {rgb: [0,0,0], hex: "#000000ff", key: "0,0,0,255", alpha: 255}
+     */
+    function parseRGBInput(colorString) {
+        // Check for RGB/RGBA format (e.g., "0,0,0" or "0,0,0,255")
         let rgb = [];
         let hex = '';
         let alpha = 255;
 
-        // Check for RGB/RGBA format (e.g., "0,0,0" or "0,0,0,255")
-        if (colorString.includes(',')) {
-            const parts = colorString.split(',').map(p => parseInt(p.trim(), 10));
-            if (parts.length >= 3 && parts.slice(0, 3).every(p => !isNaN(p) && p >= 0 && p <= 255)) {
-                rgb = [parts[0], parts[1], parts[2]];
-                if (parts.length === 4) {
-                    alpha = parts[3];
-                }
-                hex = `#${rgb.map(c => c.toString(16).padStart(2, '0')).join('')}`;
-            } else {
-                return null;
+        const parts = colorString.split(',').map(p => parseInt(p.trim(), 10));
+        if (parts.length >= 3 && parts.slice(0, 3).every(p => !isNaN(p) && p >= 0 && p <= 255)) {
+            rgb = [parts[0], parts[1], parts[2]];
+            if (parts.length === 4) {
+                alpha = parts[3];
             }
-        } else {
-            // Assume hex format
-            const hexValue = colorString.startsWith('#') ? colorString.slice(1) : colorString;
-            let finalHex = '';
-
-            if (hexValue.length === 1) {
-                finalHex = hexValue.repeat(6);
-            } else if (hexValue.length === 2) {
-                finalHex = hexValue.repeat(3);
-            } else if (hexValue.length === 3) {
-                finalHex = hexValue.charAt(0).repeat(2) + hexValue.charAt(1).repeat(2) + hexValue.charAt(2).repeat(2);
-            } else if (hexValue.length === 6) {
-                finalHex = hexValue;
-            } else if (hexValue.length === 8) {
-                finalHex = hexValue.substring(0, 6);
-                alpha = parseInt(hexValue.substring(6, 8), 16);
-            } else {
-                return null;
-            }
-            
-            rgb = [
-                parseInt(finalHex.substring(0, 2), 16),
-                parseInt(finalHex.substring(2, 4), 16),
-                parseInt(finalHex.substring(4, 6), 16)
-            ];
-            hex = `#${finalHex}`;
+            hex = `#${rgb.map(c => c.toString(16).padStart(2, '0')).join('')}`;
+            return { rgb, hex, key: rgb.join(',') + ',' + alpha, alpha };
         }
+        return null;
+    }
+
+    /**
+     * Converts a hex color string to a standardized color object.
+     * Supports hex shorthand formats (e.g., "#f00" for "#ff0000"), as well as full hex formats (e.g., "#ff0000" for "#ff0000") and hex formats with alpha (e.g., "#ff000088" for "#ff0000" with alpha 136).
+     * @param {string} colorString - The hex color input from the user.
+     * @returns {{rgb: number[], hex: string, key: string} | null} An object with color info or null.
+     */
+    function parseHexInput(colorString) {
+        // Assume hex format
+        let finalHex = '';
+        let rgb = [];
+        let alpha = 255;
+        
+        const hexValue = colorString.startsWith('#') ? colorString.slice(1) : colorString;
+
+        if (hexValue.length === 1) {
+            finalHex = hexValue.repeat(6);
+        } else if (hexValue.length === 2) {
+            finalHex = hexValue.repeat(3);
+        } else if (hexValue.length === 3) {
+            finalHex = hexValue.charAt(0).repeat(2) + hexValue.charAt(1).repeat(2) + hexValue.charAt(2).repeat(2);
+        } else if (hexValue.length === 6) {
+            finalHex = hexValue;
+        } else if (hexValue.length === 8) {
+            finalHex = hexValue.substring(0, 6);
+            alpha = parseInt(hexValue.substring(6, 8), 16);
+        } else {
+            return null;
+        }
+
+        rgb = [
+            parseInt(finalHex.substring(0, 2), 16),
+            parseInt(finalHex.substring(2, 4), 16),
+            parseInt(finalHex.substring(4, 6), 16)
+        ];
+        hex = `#${finalHex}`;
         return { rgb, hex, key: rgb.join(',') + ',' + alpha, alpha };
     }
 
